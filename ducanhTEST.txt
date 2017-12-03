@@ -1,0 +1,172 @@
+#include "stdafx.h"
+#include <iostream>
+#include "string"
+#include <istream>
+using namespace std;
+
+int UCLN(int tuso, int mauso)
+{
+	if (tuso%mauso == 0)
+		return mauso;
+	else
+		return UCLN(mauso, tuso%mauso);
+}
+class Phanso
+{
+private:
+	int tuso;
+	int mauso;
+public:
+	Phanso()
+	{
+		tuso = 0;
+		mauso = 0;
+	}
+	Phanso(int tuso, int mauso)
+	{
+		this->tuso = tuso;
+		this->mauso = mauso;
+	}
+	void Nhap()
+	{
+		cout << "Nhap Tu So Phan So: ";
+		cin >> this->tuso;
+		do
+		{
+
+			cout << "\nNhap Mau So Phan So: ";
+			cin >> this->mauso;
+			if (this->mauso == 0)
+			{
+				cout << "\nMau So Ban Vua Nhap Khong Hop Le Xin Kiem Tra Lai! \n";
+			}
+		} while
+			(this->mauso == 0);
+	}
+
+	friend Phanso cong(Phanso ps1, Phanso ps2)
+	{
+		Phanso temp;
+		temp.tuso = ps1.tuso * ps2.mauso + ps2.tuso * ps1.mauso;
+		temp.mauso = ps1.mauso * ps2.mauso;
+		return temp;
+	}
+
+	friend Phanso tru(Phanso ps1, Phanso ps2)
+	{
+		Phanso temp;
+		temp.tuso = ps1.tuso * ps2.mauso - ps2.tuso * ps1.mauso;
+		temp.mauso = ps1.mauso * ps2.mauso;
+		return temp;
+	}
+
+	friend Phanso nhan(Phanso ps1, Phanso ps2)
+	{
+		Phanso temp;
+		temp.tuso = ps1.tuso * ps2.tuso;
+		temp.mauso = ps1.mauso * ps2.mauso;
+		return temp;
+	}
+
+	friend Phanso chia(Phanso ps1, Phanso ps2)
+	{
+		Phanso temp;
+		temp.tuso = ps1.tuso * ps2.mauso;
+		temp.mauso = ps1.mauso * ps2.tuso;
+		return temp;
+	}
+	void Rutgon()
+	{
+		int uc = UCLN(tuso, mauso);
+		tuso = tuso / uc;
+		mauso = mauso / uc;
+	}
+
+
+
+	void In()
+	{
+		cout << "Phan So Rut Gon: " << tuso << "/" << mauso << "\n";
+
+	}
+	void In1()
+	{
+		cout << " = " << tuso << "/" << mauso << "\n";
+	}
+};
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	Phanso PS, ps1, ps2, Tong, Hieu, Tich, Thuong;
+	int luachon;
+	cout << "1.T?ng hai phân s? ." << endl;
+	cout << "2.Hi?u hai phân s? ." << endl;
+	cout << "3.Tích hai phân s?." << endl;
+	cout << "4.Thuong hai phân s? ." << endl;
+	cout << "5.Thoat ." << endl;
+	do
+	{
+
+		cout << "Hay Nhap Vao Muc Can Tinh :";
+		cin >> luachon;
+		if (luachon<1 || luachon>5)
+		{
+			cout << "Nhap Vao Khong Hop Le, Vui Long Kiem Tra Lai" << endl;
+		}
+		switch (luachon)
+		{
+		case 1:{
+				   int Tong;
+				   cout << "Tinh Tong Hai Phan So:";
+				   cin >> Tong;
+
+
+		}
+		case 2:
+		{
+				  int Hieu;
+		          cout << "Tinh Hieu Hai Phan So:";
+				  cin >> Hieu;
+		}
+			;
+		case 3:{
+				   int Tich;
+				   cout << "Tinh Tich Hai Phan So :";
+				   cin >> Tich;
+		}
+		case 4:{
+				   int Thuong;
+				   cout << "Tinh Thuong Hai Phan So :";
+				   cin >> Thuong;
+		}
+		case 5:{
+				   return 0;
+				   break;
+		}
+
+		}
+
+	} while (luachon != 6);
+	
+	/*Phanso PS, ps1, ps2, Tong, Hieu, Tich, Thuong;
+	cout << "\n Nhap Phan So A: \n"; ps1.Nhap();
+	ps1.Rutgon();
+	ps1.In();
+	cout << "\n Nhap Phan So B: \n "; ps2.Nhap();
+	ps2.Rutgon();
+	ps2.In();
+	cout << "\n Tong Hai Phan So: A + B";
+	Tong = cong(ps1, ps2); Tong.Rutgon();
+	Tong.In1();
+	cout << "\n Hieu Hai Phan So: A - B";
+	Hieu = tru(ps1, ps2); Hieu.Rutgon();
+	Hieu.In1();
+	cout << "\n Tich Hai Phan So: A * B";
+	Tich = nhan(ps1, ps2); Tich.Rutgon();
+	Tich.In1();
+	cout << "\n Thuong Hai Phan So: A / B";
+	Thuong = chia(ps1, ps2); Thuong.Rutgon();
+	Thuong.In1();
+	system("pause");*/
+	return 0;
